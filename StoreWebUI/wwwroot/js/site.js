@@ -19,19 +19,18 @@ function addProduct() {
     $.ajax({
         url: "https://localhost:22950/p",
         method: "POST",
-        data: obj,
+        data: JSON.stringify(obj),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (data) {
-            CallGetAll();
+        success: function (response) {
+            console.log(response);
             location.href = 'https://localhost:7189/';
             alert("Product Added Successfully");
-        },
-        error: function (data) {
-            console.log(data);
         }
     })
+
 }
+CallGetAll();
 
 function CallGetAll() {
     $.ajax({
