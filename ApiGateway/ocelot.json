@@ -1,0 +1,28 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/product/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 10601
+        }
+      ],
+      "UpstreamPathTemplate": "/p/{id}",
+      "UpstreamHttpMethod": [ "Get", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 10601
+        }
+      ],
+      "UpstreamPathTemplate": "/p",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    }
+  ]
+}

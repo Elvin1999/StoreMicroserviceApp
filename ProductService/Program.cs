@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ProductService.DataContext;
 using ProductService.Repository;
@@ -5,11 +6,12 @@ using ProductService.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.WebHost.UseUrls("https://*:10601;");
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var connection = builder.Configuration.GetConnectionString("MyConn");
 builder.Services.AddDbContext<ProductContext>(opt =>

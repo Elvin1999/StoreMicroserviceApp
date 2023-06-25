@@ -3,6 +3,31 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Store App</h1>
 </div>
+
+<section style="width:50%;margin:auto;margin-top:50px;">
+    <h2>Please Select Product Item To Get BARCODE</h2>
+    <section>
+        <label>Product ID</label>
+        <input class="form-control" type="number" placeholder="Like...1" />
+    </section>
+    <section>
+        <label>Volume</label>
+        <input class="form-control" type="number" placeholder="Like...2.55" />
+    </section>
+        <a class="btn btn-outline-primary">Get BarCode</a>
+</section>
+
+<section style="width:50%;margin:auto;margin-top:50px;">
+  <h1>Find Product by BARCODE</h1>
+  <input class="form-control" type="text" placeholder="Like...1234-AAHH-1122-33AA"/>
+</section>
+
+<section style="width:50%;margin:auto;margin-top:50px;">
+    <a onclick="CallGetAll()" class="btn btn-outline-primary">Show All Products</a>
+    <a class="btn btn-outline-primary" href="/home/add">Add Product</a>
+    <a class="btn btn-outline-primary">Update Product</a>
+</section>
+<section style="width:60%;margin:auto;margin-top:50px;display:flex;flex-wrap:wrap;" id="products"></section>
+

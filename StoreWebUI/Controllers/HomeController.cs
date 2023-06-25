@@ -18,6 +18,11 @@ namespace StoreWebUI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
