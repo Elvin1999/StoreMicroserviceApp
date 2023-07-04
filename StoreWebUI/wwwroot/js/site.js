@@ -83,6 +83,7 @@ function GetBarcode() {
         dataType: "json",
         success: function (response) {
             console.log(response);
+            $("#result").html(response);
             //location.href = 'https://localhost:7189/';
         }
     })
