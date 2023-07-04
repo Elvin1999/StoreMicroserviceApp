@@ -45,7 +45,7 @@ function CallGetAll() {
   <div class="card-body">
     <h5 class="card-title">${data[i].name}</h5>
     <p class="card-text">${data[i].price}$</p>
-    <a href="#" class="btn btn-primary">Select Product</a>
+    <a onclick="SelectProduct(${data[i].id})" class="btn btn-primary">Select Product</a>
   </div>
 </div>
 `;
@@ -55,4 +55,8 @@ function CallGetAll() {
             $("#products").html(content);
         }
     })
+}
+
+function SelectProduct(id) {
+    $("#productId").val(id);
 }
