@@ -32,6 +32,7 @@ function addProduct() {
 }
 CallGetAll();
 
+var products=[];
 function CallGetAll() {
     $.ajax({
         url: "https://localhost:22950/p",
@@ -51,12 +52,38 @@ function CallGetAll() {
 `;
                 content += item;
             }
-            console.log(data);
+            products = data;
+            console.log(products);
             $("#products").html(content);
         }
     })
 }
 
+var selectedProduct;
 function SelectProduct(id) {
     $("#productId").val(id);
+    selectedProduct = products.find(p => p.id == id);
+    console.log(selectedProduct);
+}
+
+function GetBarcode() {
+    let volume = $("#volumeId").val();
+    let obj = {
+        "productId": selectedProduct.id,
+        "volume": volume,
+        "price": selectedProduct.price,
+        "productName": selectedProduct.name
+    }
+
+    $.ajax({
+        url: "https://localhost:22950/b",
+        method: "POST",
+        data: JSON.stringify(obj),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            //location.href = 'https://localhost:7189/';
+        }
+    })
 }

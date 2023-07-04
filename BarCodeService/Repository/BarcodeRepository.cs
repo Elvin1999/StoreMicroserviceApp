@@ -15,15 +15,21 @@ namespace BarCodeService.Repository
 
         public void AddBarcode(ProductItemDto model)
         {
-            var item = new Barcode
+            var hash = model.GetHashCode().ToString();
+            var item = _context.Barcodes.FirstOrDefault(b => b.Code == hash);
+            if (item == null)
             {
-                Code = model.GetHashCode().ToString(),
+
+            var data = new Barcode
+            {
+                Code = hash,
                 ProductName = model.ProductName,
                 TotalPrice = model.Volume * model.Price,
                 Volume = model.Volume,
             };
-            _context.Barcodes.Add(item);
+            _context.Barcodes.Add(data);
             _context.SaveChanges();
+            }
         }
     }
 }
