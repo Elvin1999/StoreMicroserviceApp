@@ -11,17 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BarCodeService", "BarCodeSe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SearchService", "SearchService", "{DE94F88E-C7EC-45DC-A4B5-2903985730E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{1A0323D7-BB09-4406-8A64-65AB82C6A4F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{1A0323D7-BB09-4406-8A64-65AB82C6A4F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWebUI", "StoreWebUI\StoreWebUI.csproj", "{FA224E5F-C8FC-4E21-93EC-AD9E539B9E61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreWebUI", "StoreWebUI\StoreWebUI.csproj", "{FA224E5F-C8FC-4E21-93EC-AD9E539B9E61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarCodeService", "BarCodeService\BarCodeService.csproj", "{19F78C20-0DA6-41C4-9ADF-3059826107C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarCodeService", "BarCodeService\BarCodeService.csproj", "{19F78C20-0DA6-41C4-9ADF-3059826107C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchService", "SearchService\SearchService.csproj", "{A8B9C613-203B-4049-8CD0-33F272BC2C10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchService", "SearchService\SearchService.csproj", "{A8B9C613-203B-4049-8CD0-33F272BC2C10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductService", "ProductService", "{E746F153-A789-400B-86FD-A2FE761F4A42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{5F16F785-87C9-4542-9D00-C284357F9D52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "ProductService\ProductService.csproj", "{5F16F785-87C9-4542-9D00-C284357F9D52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageService", "ImageService", "{E0119716-AC85-4E48-BE4B-BB5AE6A99D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageServiceApi", "ImageServiceApi\ImageServiceApi.csproj", "{55C4CC23-79F1-43E5-8AB7-E39E7BF5D13C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{5F16F785-87C9-4542-9D00-C284357F9D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F16F785-87C9-4542-9D00-C284357F9D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F16F785-87C9-4542-9D00-C284357F9D52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C4CC23-79F1-43E5-8AB7-E39E7BF5D13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C4CC23-79F1-43E5-8AB7-E39E7BF5D13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C4CC23-79F1-43E5-8AB7-E39E7BF5D13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C4CC23-79F1-43E5-8AB7-E39E7BF5D13C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{19F78C20-0DA6-41C4-9ADF-3059826107C7} = {72B985EB-01DA-42BF-A150-9E89A0BFF6A1}
 		{A8B9C613-203B-4049-8CD0-33F272BC2C10} = {DE94F88E-C7EC-45DC-A4B5-2903985730E5}
 		{5F16F785-87C9-4542-9D00-C284357F9D52} = {E746F153-A789-400B-86FD-A2FE761F4A42}
+		{55C4CC23-79F1-43E5-8AB7-E39E7BF5D13C} = {E0119716-AC85-4E48-BE4B-BB5AE6A99D79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {140ECE63-2A9A-41DF-A67A-CF3866750599}
