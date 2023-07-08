@@ -35,6 +35,18 @@
       ],
       "UpstreamPathTemplate": "/b",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/search/{code}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 10603
+        }
+      ],
+      "UpstreamPathTemplate": "/s/{code}",
+      "UpstreamHttpMethod": [ "Get" ]
     }
   ]
 }

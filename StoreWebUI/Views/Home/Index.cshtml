@@ -25,8 +25,11 @@
 
 <section style="width:50%;margin:auto;margin-top:50px;">
   <h1>Find Product by BARCODE</h1>
-  <input class="form-control" type="text" placeholder="Like...1234-AAHH-1122-33AA"/>
+    <input  
+       id="searchInput" class="form-control" type="text" placeholder="Like...1234-AAHH-1122-33AA" />
+        <a onclick="Search()" class="btn btn-outline-primary">Get</a>
 </section>
+<section id="p-info" ></section>
 
 <section style="width:50%;margin:auto;margin-top:50px;">
     <a onclick="CallGetAll()" class="btn btn-outline-primary">Show All Products</a>

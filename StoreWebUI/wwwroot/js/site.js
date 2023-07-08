@@ -3,6 +3,34 @@
 
 // Write your JavaScript code.
 
+let element = document.getElementById("p-info");
+function Search() {
+    var value = document.getElementById("searchInput").value;
+    if (String(value).trim() == '') {
+        alert('Please use Barcode Scanner');
+    }
+    else {
+        $.ajax({
+            url: `https://localhost:22950/s/${value}`,
+            method: "GET",
+            success: function (data) {
+                console.log(data);
+                let content = `
+                <section>
+<h1>Name : ${data.productName}</h1>
+<section>
+<h5>Code : ${data.code}</h5>
+<h5>Volume : ${data.volume}</h5>
+<h4><b>Total Price : ${data.totalPrice}$</b></h5>
+</section>
+</section>
+`;
+                element.innerHTML+= content;
+            }
+        })
+    }
+}
+
 function addProduct() {
     const name = document.getElementById("product").value;
     const price = document.getElementById("price").value;
@@ -28,7 +56,6 @@ function addProduct() {
             alert("Product Added Successfully");
         }
     })
-
 }
 CallGetAll();
 
