@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SearchService.DataContext;
 using SearchService.Repositories;
+using SearchService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISearchRepository, SearchRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 
 var conn = builder.Configuration.GetConnectionString("MyConn");
 builder.Services.AddDbContext<BarcodeContext>(opt =>

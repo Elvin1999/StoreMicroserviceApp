@@ -26,6 +26,7 @@ namespace BarCodeService.Repository
                 ProductName = model.ProductName,
                 TotalPrice = model.Volume * model.Price,
                 Volume = model.Volume,
+                ProductId = model.ProductId,
             };
             _context.Barcodes.Add(data);
             _context.SaveChanges();

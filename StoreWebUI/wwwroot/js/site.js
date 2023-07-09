@@ -34,58 +34,66 @@ function Search() {
 
 
 function addProduct() {
-    getUploadedImage();
-    
-    //const name = document.getElementById("product").value;
-    //const price = document.getElementById("price").value;
-    //const quantity = document.getElementById("quantity").value;
-
-    //let obj = {
-    //    "id": 0,
-    //    "name": name,
-    //    "price": Number(price),
-    //    "quantity": Number(quantity)
-    //};
-    //console.log(obj);
-
-    //$.ajax({
-    //    url: "https://localhost:22950/p",
-    //    method: "POST",
-    //    data: JSON.stringify(obj),
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    success: function (response) {
-    //        console.log(response);
-    //        location.href = 'https://localhost:7189/';
-    //        alert("Product Added Successfully");
-    //    }
-    //})
-}
-
-function getUploadedImage() {
-
-    var fileInput = document.getElementById('MyImage');
-    var file = fileInput.files[0];
-    var formData = new FormData();
-    formData.append('file', file);
+    var response = getUploadedImage();
+    response.then((d) => {
+        console.log(d);
+        const name = document.getElementById("product").value;
+    const price = document.getElementById("price").value;
+    const quantity = document.getElementById("quantity").value;
 
     let obj = {
-        "file": formData
-    };
-    console.log(file);
-    console.log(formData);
+        "id": 0,
+        "name": name,
+        "price": Number(price),
+        "quantity": Number(quantity),
+        "imageUrl":d
+        };
+        console.log("Object");
+        console.log(obj);
 
     $.ajax({
-        url: "https://localhost:22950/i",
+        url: "https://localhost:22950/p",
         method: "POST",
         data: JSON.stringify(obj),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            console.log("Response");
             console.log(response);
+            location.href = 'https://localhost:7189/';
+            alert("Product Added Successfully");
         }
     })
+    }, error => alert(error));
+
+
+    
+}
+var PATH = "";
+function getUploadedImage() {
+
+    var fileInput = document.getElementById('MyImage');
+    console.log(fileInput.files);
+    if (fileInput.files.length == 0) {
+        return "https://www.wdmtech.com/demo/images/stories/virtuemart/product/product_lg_type.jpg";
+    }
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append('file', file);
+
+
+    return $.ajax({
+        url: 'https://localhost:22950/i',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            return response;
+        },
+        error: function () {
+            console.error('Request failed');
+        }
+    });
 }
 
 
@@ -102,6 +110,7 @@ function CallGetAll() {
             for (var i = 0; i < data.length; i++) {
                 let item = `
 <div class="card" style="width: 18rem;">
+     <img class="card-img-top" src="${data[i].imageUrl}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">${data[i].name}</h5>
     <p class="card-text">${data[i].price}$</p>

@@ -17,21 +17,24 @@ namespace ImageServiceApi.Controllers
             _photoService = photoService;
         }
 
-        // POST api/<ImageController>
         [HttpPost]
-        public IActionResult Post([FromBody] PhotoCreationDto dto)
+        public IActionResult Post()
         {
-            try
+
+            var file = Request.Form.Files.GetFile("file");
+
+            if (file != null && file.Length > 0)
             {
-                
-                var result=_photoService.UploadImage(dto);
+                string result=_photoService.UploadImage(new PhotoCreationDto
+                {
+                    File = file
+                });
                 return Ok(result);
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            return BadRequest(new { message = "No file received" });
         }
+
 
     }
 }

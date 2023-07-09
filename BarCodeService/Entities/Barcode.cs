@@ -7,5 +7,6 @@
         public decimal TotalPrice { get; set; }
         public string? ProductName { get; set; }
         public decimal Volume { get; set; }
+        public int ProductId { get; set; }
     }
 }
