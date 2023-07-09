@@ -22,8 +22,8 @@ namespace BarCodeService.Controllers
         [HttpPost("GetBarCode")]
         public string GetBarcode(ProductItemDto dto)
         {
-            _barcodeRepository.AddBarcode(dto);
-            return dto.GetHashCode().ToString();
+            var code=_barcodeRepository.AddBarcode(dto);
+            return code;
         }
 
         // GET api/<BarcodeController>/5

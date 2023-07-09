@@ -4,6 +4,6 @@ namespace BarCodeService.Repository
 {
     public interface IBarcodeRepository
     {
-        void AddBarcode(ProductItemDto model);
+        string AddBarcode(ProductItemDto model);
     }
 }

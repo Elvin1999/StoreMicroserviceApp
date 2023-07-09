@@ -14,11 +14,12 @@ namespace BarCodeService.Repository
             _context = context;
         }
 
-        public void AddBarcode(ProductItemDto model)
+        public string AddBarcode(ProductItemDto model)
         {
 
             var hash = model.GetHashCode().ToString();
-            var item = _context.Barcodes.FirstOrDefault(b => b.Code == hash);
+            var item = _context.Barcodes.FirstOrDefault(b => b.ProductId==model.ProductId&&
+            b.Volume==model.Volume);
             if (item == null)
             {
             var data = new Barcode
@@ -31,7 +32,9 @@ namespace BarCodeService.Repository
             };
             _context.Barcodes.Add(data);
             _context.SaveChanges();
+                return hash;
             }
+            return item.Code;
         }
     }
 }
