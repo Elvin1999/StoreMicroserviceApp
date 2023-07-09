@@ -143,16 +143,16 @@ function GetBarcode() {
         "price": selectedProduct.price,
         "productName": selectedProduct.name
     }
-    
+    console.log(obj);
     $.ajax({
         url: "https://localhost:22950/b",
         method: "POST",
         data: JSON.stringify(obj),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (response) {
-            console.log(response);
-            $("#result").html(response);
+        success: function (data) {
+            console.log(data);
+            $("#result").html(data);
         }
     })
 }

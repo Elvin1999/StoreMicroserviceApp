@@ -23,10 +23,7 @@ namespace BarCodeService.Controllers
         public string GetBarcode(ProductItemDto dto)
         {
             _barcodeRepository.AddBarcode(dto);
-            var fullString=dto.ToString();
-            var base64Bytes = Encoding.UTF8.GetBytes(fullString);
-            var str=Convert.ToBase64String(base64Bytes);
-            return str;
+            return dto.GetHashCode().ToString();
         }
 
         // GET api/<BarcodeController>/5

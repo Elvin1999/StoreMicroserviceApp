@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"{ProductId}{Volume}{Price}{ProductName}";
+            return $"12345:{ProductId}-{Volume}";
         }
     }//1234567890
 }

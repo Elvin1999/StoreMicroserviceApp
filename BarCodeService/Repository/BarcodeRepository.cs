@@ -16,9 +16,8 @@ namespace BarCodeService.Repository
 
         public void AddBarcode(ProductItemDto model)
         {
-            var fullString = model.ToString();
-            var base64Bytes = Encoding.UTF8.GetBytes(fullString);
-            var hash = Convert.ToBase64String(base64Bytes);
+
+            var hash = model.GetHashCode().ToString();
             var item = _context.Barcodes.FirstOrDefault(b => b.Code == hash);
             if (item == null)
             {
