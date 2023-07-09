@@ -17,6 +17,7 @@ function Search() {
                 console.log(data);
                 let content = `
                 <section>
+<img  src='${data.imageUrl}' style='width:100px;height:100px;'/>
 <h1>Name : ${data.productName}</h1>
 <section>
 <h5>Code : ${data.code}</h5>
@@ -142,7 +143,7 @@ function GetBarcode() {
         "price": selectedProduct.price,
         "productName": selectedProduct.name
     }
-
+    
     $.ajax({
         url: "https://localhost:22950/b",
         method: "POST",
@@ -152,7 +153,6 @@ function GetBarcode() {
         success: function (response) {
             console.log(response);
             $("#result").html(response);
-            //location.href = 'https://localhost:7189/';
         }
     })
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SearchService.Dtos;
 using SearchService.Repositories;
+using SearchService.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,15 +12,16 @@ namespace SearchService.Controllers
     public class SearchController : ControllerBase
     {
         private readonly ISearchRepository _searchRepository;
-
-        public SearchController(ISearchRepository searchRepository)
+        private readonly IProductService _productService;
+        public SearchController(ISearchRepository searchRepository, IProductService productService)
         {
             _searchRepository = searchRepository;
+            _productService = productService;
         }
 
         // GET api/<SearchController>/5
         [HttpGet("{code}")]
-        public IActionResult Get(string code)
+        public async Task<IActionResult> Get(string code)
         {
             try
             {
@@ -37,9 +39,12 @@ namespace SearchService.Controllers
                     return BadRequest();
                 }
 
-                var productId=item.ProductId;   
-                /////////////
-                return Ok(item);
+                var productId=item.ProductId;
+                var result = await _productService.GetProductImagePathAsync(productId);
+
+                dto.ImageUrl = result;
+
+                return Ok(dto);
             }
             catch (Exception ex)
             {

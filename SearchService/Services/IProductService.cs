@@ -2,6 +2,6 @@
 {
     public interface IProductService
     {
-        string GetProductImagePath(int productId);
+        Task<string> GetProductImagePathAsync(int productId);
     }
 }

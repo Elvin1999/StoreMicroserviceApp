@@ -2,9 +2,14 @@
 {
     public class ProductService : IProductService
     {
-        public string GetProductImagePath(int productId)
+        public async Task<string> GetProductImagePathAsync(int productId)
         {
-            throw new NotImplementedException();
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage response = new HttpResponseMessage();
+            string url = "https://localhost:10601/api/Product/GetImage/"+productId;
+            response = await httpClient.GetAsync(url);
+            var str = await response.Content.ReadAsStringAsync();
+            return str;
         }
     }
 }

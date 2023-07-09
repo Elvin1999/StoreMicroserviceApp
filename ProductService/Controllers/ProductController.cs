@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductService.Dtos;
 using ProductService.Entities;
 using ProductService.Repository;
+using ProductService.Services;
 using System.Reflection.Metadata.Ecma335;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,11 +15,13 @@ namespace ProductService.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
+        private readonly IProductService _productService;
         private readonly IMapper _mapper;
-        public ProductController(IProductRepository productRepository, IMapper mapper)
+        public ProductController(IProductRepository productRepository, IMapper mapper, IProductService productService)
         {
             _productRepository = productRepository;
             _mapper = mapper;
+            _productService = productService;
         }
 
         // GET: api/<ProductController>
@@ -37,6 +40,13 @@ namespace ProductService.Controllers
             var item = _productRepository.GetById(id);
             var dto=_mapper.Map<ProductDto>(item);
             return dto;
+        }
+
+        [HttpGet("GetImage/{id}")]
+        public IActionResult GetImage(int id)
+        {
+            var result=_productService.GetProductImage(id);
+            return Ok(result);
         }
 
         // POST api/<ProductController>

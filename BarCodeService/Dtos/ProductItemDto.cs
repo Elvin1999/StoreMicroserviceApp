@@ -7,9 +7,9 @@
         public decimal Price { get; set; }
         public string? ProductName { get; set; }
 
-        public override int GetHashCode()
+        public override string ToString()
         {
-            return $"{ProductId}-{Volume}-{ProductName}-{Price}".GetHashCode();
+            return $"{ProductId}{Volume}{Price}{ProductName}";
         }
     }//1234567890
 }

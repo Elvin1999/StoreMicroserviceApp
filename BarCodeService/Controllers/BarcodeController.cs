@@ -1,6 +1,7 @@
 ﻿using BarCodeService.Dtos;
 using BarCodeService.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,7 +23,10 @@ namespace BarCodeService.Controllers
         public string GetBarcode(ProductItemDto dto)
         {
             _barcodeRepository.AddBarcode(dto);
-            return dto.GetHashCode().ToString();
+            var fullString=dto.ToString();
+            var base64Bytes = Encoding.UTF8.GetBytes(fullString);
+            var str=Convert.ToBase64String(base64Bytes);
+            return str;
         }
 
         // GET api/<BarcodeController>/5

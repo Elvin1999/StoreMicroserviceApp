@@ -1,6 +1,7 @@
 ﻿using BarCodeService.DataContext;
 using BarCodeService.Dtos;
 using BarCodeService.Entities;
+using System.Text;
 
 namespace BarCodeService.Repository
 {
@@ -15,11 +16,12 @@ namespace BarCodeService.Repository
 
         public void AddBarcode(ProductItemDto model)
         {
-            var hash = model.GetHashCode().ToString();
+            var fullString = model.ToString();
+            var base64Bytes = Encoding.UTF8.GetBytes(fullString);
+            var hash = Convert.ToBase64String(base64Bytes);
             var item = _context.Barcodes.FirstOrDefault(b => b.Code == hash);
             if (item == null)
             {
-
             var data = new Barcode
             {
                 Code = hash,
